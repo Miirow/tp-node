@@ -1,0 +1,19 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: development
+    working_dir: /home/node
+    user: node
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node
+      - notes-data:/home/node/data
+    environment:
+      PORT: 3000
+    command: sh -c "npm install && npm run dev"
+
+volumes:
+  notes-data:

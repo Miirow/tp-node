@@ -1,0 +1,16 @@
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: production
+    ports:
+      - "3000:3000"
+    volumes:
+      - notes-data:/home/node/data
+    environment:
+      PORT: 3000
+    restart: unless-stopped
+
+volumes:
+  notes-data:
